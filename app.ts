@@ -2,9 +2,8 @@ import * as express from 'express';
 import * as http from 'http';
 import * as socket from 'socket.io';
 
-import { socketRouter } from './routers/socket/RouterSocket';
+import { socketRouter } from './socket/RouterSocket';
                                 
-
 let app = express();
 let myHttp = new http.Server(app);
 let io = socket(myHttp);
@@ -12,17 +11,6 @@ let io = socket(myHttp);
 
 app.use('/',socketRouter);
 
-// app.get('/', function(req, res){
-//     res.sendFile(__dirname + '/public/index.html');
-// });
-
-// app.get('/js/index.js', function(req, res){
-//     res.sendFile(__dirname + '/public/js/index.js');
-// });
-
-// app.get('/css/mystyle.css', function(req, res){
-//     res.sendFile(__dirname + '/public/css/mystyle.css');
-// });
 
 io.on('connection',function(socket){
     console.log("nova conexao");

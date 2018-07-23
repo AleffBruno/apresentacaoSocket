@@ -3,20 +3,11 @@ exports.__esModule = true;
 var express = require("express");
 var http = require("http");
 var socket = require("socket.io");
-var RouterSocket_1 = require("./routers/socket/RouterSocket");
+var RouterSocket_1 = require("./socket/RouterSocket");
 var app = express();
 var myHttp = new http.Server(app);
 var io = socket(myHttp);
 app.use('/', RouterSocket_1.socketRouter);
-// app.get('/', function(req, res){
-//     res.sendFile(__dirname + '/public/index.html');
-// });
-// app.get('/js/index.js', function(req, res){
-//     res.sendFile(__dirname + '/public/js/index.js');
-// });
-// app.get('/css/mystyle.css', function(req, res){
-//     res.sendFile(__dirname + '/public/css/mystyle.css');
-// });
 io.on('connection', function (socket) {
     console.log("nova conexao");
     //socket.broadcast.emit('[NOME_DO_EVENTO]'); ---- envia uma msg pata todos do client exeto para eu mesmo
