@@ -1,15 +1,30 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+$(function () {
+    //inicializa o socket do lado do client
+    var socket = io();
 
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
+    
+    $('form').submit(function(){ 
+        //socket.emit('[NOME_DO_EVENTO]','[PAYLOAD]') ---- envia um evento para o server
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-});
+        //pega o valor do input de mensagem e emite um evento chamado 'chat message'
+        socket.emit('chat message', $('#m').val());
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+        //limpa o input de mensagem
+        $('#m').val('');
+        return false;
+    });
+
+    //socket.on('[NOME_DO_EVENTO]',function(arg){}) ---- fica "escutando" o acontecer de um evento
+    socket.on('io.emit',function(msg){
+        console.log(msg);
+    });
+
+    socket.on('broadcast',function(msg){
+        console.log(msg);
+    });
+
+    socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+    });
+
 });
