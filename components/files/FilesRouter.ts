@@ -1,21 +1,33 @@
-"use strict";
-exports.__esModule = true;
-var express = require("express");
-var files = require("./FilesController");
-exports.socketRouter = express.Router();
+import * as express from 'express';
+//import * as path from 'path';
+
+import * as filesController from './FilesController';
+
+export let fileRouter = express.Router();
+
 // socketRouter.get('/',(req,res) => {
 //     res.sendFile(path.resolve() + '/public/index.html');
 // });
-exports.socketRouter.get('/', files.sendIndexHtml);
+fileRouter.get('/', filesController.sendIndexHtml);
+
 // socketRouter.get('/js/index.js',(req ,res) => {
 //     res.sendFile(path.resolve() + '/public/js/index.js');
 // });
-exports.socketRouter.get('/js/index.js', files.sendIndexJs);
+fileRouter.get('/js/index.js', filesController.sendIndexJs);
+
 // socketRouter.get('/css/mystyle.css',(req,res) => {
 //     res.sendFile(path.resolve() + '/public/css/mystyle.css');
 // });
-exports.socketRouter.get('/css/mystyle.css', files.sendStyleCss);
+fileRouter.get('/css/mystyle.css', filesController.sendStyleCss);
+
+
+
 // export let myRouter = express.Router();
 // myRouter.get('/hello',(req,res) => {
 //     res.send("hi");
 // });
+
+
+
+
+
