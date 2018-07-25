@@ -1,6 +1,5 @@
 import * as socket from 'socket.io';
 
-
 export function socketBehavior (httpServer) : void {
     let io = socket(httpServer);
 

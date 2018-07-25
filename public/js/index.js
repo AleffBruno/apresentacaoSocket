@@ -2,7 +2,10 @@ $(function () {
     //inicializa o socket do lado do client
     var socket = io();
 
-    
+    $('input').keyup(function (e){
+        //EMITIR EVENTO AQUI E VER OQUE ACONTECE QUANDO NAO RETURN FALSE
+    });
+
     $('form').submit(function(){ 
         //socket.emit('[NOME_DO_EVENTO]','[PAYLOAD]') ---- envia um evento para o server
 
