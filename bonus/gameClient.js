@@ -9,8 +9,6 @@ var socket;
 $(function() {
     socket = io();
 
-    
-
     $( "#myForm" ).submit(function( event ) {
         namePlayer = $('#inputName').val();
         data = {
@@ -22,7 +20,7 @@ $(function() {
         $( "#myForm" ).hide();
 
         $('body').append(
-            '<div id="'+namePlayer+'" class="myDiv" style="background-color:lightblue; height: 50px;width: 50px;"></div>'
+            '<div id="'+namePlayer+'" class="myDiv" style="background-size: cover;background-image: url(https://media.licdn.com/dms/image/C4E03AQHG1HRAOnG6Nw/profile-displayphoto-shrink_200_200/0?e=1537401600&v=beta&t=y8Ep69lsWxAgO79wvdBphWzh0praiLx6B0JgrOpZf28); background-color:lightblue; height: 50px;width: 50px;"></div>'
         );
 
         player = $( "#"+namePlayer );
@@ -45,7 +43,7 @@ $(function() {
         playersOnline.forEach(function(item,index){
             if(item.name != namePlayer) {
                 $('body').append(
-                    '<div id="'+item.name+'" class="myDiv" style="position: absolute;background-color:lightblue; height: 50px;width: 50px;left:'+item.left+'px; top:'+item.top+'px;"></div>'
+                    '<div id="'+item.name+'" class="myDiv" style="background-size: cover;background-image: url(https://media.licdn.com/dms/image/C4E03AQHG1HRAOnG6Nw/profile-displayphoto-shrink_200_200/0?e=1537401600&v=beta&t=y8Ep69lsWxAgO79wvdBphWzh0praiLx6B0JgrOpZf28);position: absolute;background-color:lightblue; height: 50px;width: 50px;left:'+item.left+'px; top:'+item.top+'px;"></div>'
                 );
             }
             
@@ -60,7 +58,7 @@ $(function() {
                 //desapensa do body e dps apenda novamente
                 $('body').children("div#"+item.name).remove();
                 $('body').append(
-                    '<div id="'+item.name+'" class="myDiv" style="position: absolute;background-color:lightblue; height: 50px;width: 50px;left:'+item.left+'px; top:'+item.top+'px;"></div>'
+                    '<div id="'+item.name+'" class="myDiv" style="background-size: cover;background-image: url(https://media.licdn.com/dms/image/C4E03AQHG1HRAOnG6Nw/profile-displayphoto-shrink_200_200/0?e=1537401600&v=beta&t=y8Ep69lsWxAgO79wvdBphWzh0praiLx6B0JgrOpZf28);position: absolute;background-color:lightblue; height: 50px;width: 50px;left:'+item.left+'px; top:'+item.top+'px;"></div>'
                 );
             }
             
