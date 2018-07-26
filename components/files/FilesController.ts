@@ -1,13 +1,15 @@
 import * as path from 'path';
 
-export function sendIndexHtml(req,res){
+import { Request , Response } from 'express';
+
+export function sendIndexHtml(req : Request ,res : Response){
     res.sendFile(path.resolve() + '/public/index.html');
 };
 
-export function sendIndexJs(req,res){
+export function sendIndexJs(req : Request ,res : Response){
     res.sendFile(path.resolve() + '/public/js/index.js');
 };
 
-export function sendStyleCss(req,res){
+export function sendStyleCss(req : Request ,res : Response){
     res.sendFile(path.resolve() + '/public/css/mystyle.css');
 };
